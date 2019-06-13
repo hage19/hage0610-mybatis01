@@ -1,4 +1,6 @@
 add new file readme.md
 1st commit
 2 st edit by remorte
-s rt edit by local
+3 st edit by local
+4 st edit by remorte
+
