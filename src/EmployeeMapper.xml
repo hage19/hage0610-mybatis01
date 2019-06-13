@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!--namespace：自定义的名称空间 
+ 		如果使用接口式编程，namespace不能自定义； 必须和接口的全类名一致
+ 		保证每条sql的id和方法名一致！
+  -->
+<mapper namespace="com.atguigu.mybatis.mapper.EmployeeMapper">
+	<!-- select 标签代表其中是查询语句
+				id： 这个语句的标识
+				resultType: 查询的结果类型,传入java类型的全类名
+		 #{id}: 类似于?
+		 
+		 什么样的操作就使用什么样的标签：
+		 		查询：  使用<select>
+		 		删除： 使用 <delete>
+		 		
+		 如果接口的方法只有一个参数：  #{xxx}: xxx随便写;
+		 如果接口的方法的参数是一个POJO：  #{xxx}: xxx对应POJO的属性
+	 -->
+  <select id="selectEmployeeById" resultType="com.atguigu.mybatis.bean.Employee">
+    select * from tbl_employee where id = #{x}
+  </select>
+  
+  <delete id="deleteEmployee">
+  		delete from tbl_employee where id=#{y}
+  </delete>
+  
+  <update id="updateEmployee">
+  		update tbl_employee set last_name=#{lastName},gender=#{gender},email=#{email} where id=#{id}
+  </update>
+  
+  <insert id="insertEmployee">
+  		insert into tbl_employee(last_name,gender,email) values(#{lastName},#{gender},#{email})
+  </insert>
+  
+  
+  
+  
+  
+  
+</mapper>

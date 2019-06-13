@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- resource: 从当前的类路径下引入一个资源文件 -->
+	<properties resource="db.properties" >
+		<property name="" value=""/>
+	</properties>
+		
+	
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	<!-- 数据库环境 -->
+	<environments default="development">
+		<!-- 一个environment代表一个数据库环境 必须包含两个标签： 事务管理器 数据源 -->
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driverClass}" />
+				<property name="url" value="${jdbcUrl}" />
+				<property name="username" value="${user}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!--映射: 注册所有的xxx.xml文件中的sql语句！ Mybatis最大的特点就是sql语句和java代码分离； java代码： .java文件中 
+		sql语句： xxx.xml文件中 将外部的xxx.xml中所有的sql语句加入到环境中，才能在java中调用！ -->
+	<mappers>
+		<mapper resource="EmployeeMapper.xml" />
+		<mapper class="com.atguigu.mybatis.mapper.EmployeeAnnotationMapper"/>
+	</mappers>
+</configuration>
